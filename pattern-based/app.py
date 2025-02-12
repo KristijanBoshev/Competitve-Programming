@@ -291,3 +291,62 @@ def generate_sandglass(n):
     return lst + lst[-2::-1]          
 
 
+def generate_hollow_right_angled_triangle(n):
+    """
+    Function to return a hollow right-angled triangle of '*' of side n as a list of strings.
+    
+    Parameters:
+    n (int): The height of the triangle.
+    
+    Returns:
+    list: A list of strings where each string represents a row of the triangle.
+    
+    Input: 5
+    Output: ['*', '**', '* *', '*  *', '*****']
+    """
+    
+    lst=[]
+
+    for i in range(1, n+1):
+        asterix = '*' * i
+        lst.append(asterix)
+        
+    
+    for index, _ in enumerate(lst):
+        if not index in [0,1,n-1]:
+            lst[index] = '*' + ' ' * (index-1) + '*'
+            
+    return lst    
+
+        
+def generate_number_pyramid(n):
+    """
+    Function to return a pyramid pattern of numbers of height n as a list of strings.
+    
+    Parameters:
+    n (int): The height of the pyramid.
+    
+    Returns:
+    list: A list of strings where each string represents a row of the pyramid pattern.
+    
+    Input: 4
+    Output: ['   1   ', '  1 2  ', ' 1 2 3 ', '1 2 3 4']
+
+    """
+    
+    lst=[]
+    
+    for i in range(1, n+1):
+        whitespace = " " *  (n - i)
+        tmp = []
+        for j in range(1, i+1):
+            numbers = str(j)
+            tmp.append(numbers)
+        
+        s = whitespace + " ".join(tmp) + whitespace    
+        lst.append(s)
+        
+    return lst    
+            
+    
+    
