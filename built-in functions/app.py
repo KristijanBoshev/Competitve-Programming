@@ -118,3 +118,61 @@ def count_word_frequency(sentence):
     d = Counter(words)
     
     return d
+
+
+def is_palindromic_tuple(tup):
+    """Check if the given tuple is the same when reversed
+
+    Args:
+        tuple: tuple of elements
+
+    Returns:
+        bool: True if the tuple is palindromic, False otherwise
+    """    
+    if len(tup) == 1:
+        return True
+        
+    return tup[::-1] == tup    
+
+
+def merge_dicts_with_overlapping_keys(dicts):
+    """Merge multiple dictionaries, summing values for overlapping keys
+
+    Args:
+        List[Dict]: List of dictionaries to merge
+
+    Returns:
+         Dict[str, int]
+    """    
+    d = {}
+    
+    for dictt in dicts:
+        for key,value in dictt.items():
+            d[key] = d.get(key, 0) + value
+            
+    return d
+
+
+def is_subset(lst1, lst2):
+    """Check if lst1 is a subset of lst2
+
+    Args:
+        lst1 : list of elements to check
+        lst2: list of elements to check against
+
+    Returns:
+        bool: True if lst1 is a subset of lst2, False otherwise
+    """    
+    if not lst1:  # Empty lst1 is always a subset
+        return True
+    
+    n, m = len(lst1), len(lst2)
+    
+    for i in range(m - n + 1):  # Iterate over all possible start positions in lst2
+        if lst2[i:i + n] == lst1:
+            return True
+    
+    return False       
+            
+    
+        
