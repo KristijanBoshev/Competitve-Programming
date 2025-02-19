@@ -174,5 +174,67 @@ def is_subset(lst1, lst2):
     
     return False       
             
+
+
+def is_prime(n):
+    """
+    Function to check if a number is prime.
+    
+    Parameters:
+    n (int): The number to check.
+    
+    Returns:
+    bool: True if n is prime, False otherwise.
+    """
+    
+    if n == 1:
+        return False
+        
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+        
+    if n % 1 == 0 and n % n == 0:
+        return True
+
+
+import math
+
+def is_perfect_square(num):
+    """
+    Function to check if a number is a perfect square.
+    
+    Parameters:
+    num (int): The number to check.
+    
+    Returns:
+    bool: True if num is a perfect square, False otherwise.
+    """
+    
+    if num < 0:
+        return False  
+    
+    sqrt_num = int(math.sqrt(num))
+    return sqrt_num * sqrt_num == num 
+
+
+
+def gcd(n, m):
+    """
+    Function to find the GCD of two integers without using built-in functions and recursion.
+    
+    Parameters:
+    n (int): The first integer.
+    m (int): The second integer.
+    
+    Returns:
+    int: The GCD of n and m.
+    """
+    minn = min(n,m)
+    for i in range(minn, 1, -1):
+        if n % i == 0 and m % i == 0:
+            return i
+            
+    return 1                    
     
         
