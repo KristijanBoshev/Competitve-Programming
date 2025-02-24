@@ -94,6 +94,64 @@ def countNegativesAsc(grid: List[List[int]]) -> int:
                 
         cnt += l 
                 
-    return cnt            
+    return cnt         
+
+
+def next_greatest_letter(letters, target):
+    """
+    Return the smallest character in letters that is lexicographically greater than target.
+
+    Parameters:
+    letters (List[char]): Sorted array of characters.
+    target (char): The target character.
+
+    Returns:
+    char: The smallest character greater than target, or the first character if no such character exists.
+    """
+    
+    
+    l, r = 0, len(letters) - 1
+    
+    while l<=r:
+        mid = (l+r) // 2
+        
+        if letters[mid] == target and mid != len(letters) - 1:
+            return letters[mid+1]
+        
+        elif letters[mid] < target:
+            l = mid + 1
+            
+        else:
+            r = mid - 1
+    # This avoids index out of range error when element is not found        
+    if l == len(letters): 
+        return letters[0]
+    else:
+        return letters[l]       
+    
+    
+
+def searchRange(nums: List[int], target: int) -> List[int]:
+        def check_side(is_left: bool) -> int:
+            l, r = 0, len(nums) - 1
+            bound = -1  # Default to -1 if target is not found
+            while l <= r:
+                mid = (l + r) // 2
+                if nums[mid] == target:
+                    bound = mid  # Store potential boundary
+                    if is_left:
+                        r = mid - 1  # Search further left
+                    else:
+                        l = mid + 1   # Search further right
+                elif nums[mid] < target:
+                    l = mid + 1  # Move right
+                else:
+                    r = mid - 1  # Move left
+            return bound
+
+        left = check_side(True)  # Find leftmost index
+        right = check_side(False)  # Find rightmost index
+        return [left, right] if left != -1 else [-1, -1]      
+   
                 
                                           
